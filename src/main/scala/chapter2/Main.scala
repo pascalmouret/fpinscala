@@ -27,9 +27,7 @@ object Main extends App {
 
   def uncurry[A, B, C](f: A => B => C): (A, B) => C =
     (a: A, b: B) => f(a)(b)
-  
+
   def compose[A, B, C](f: B => C, g: A => B): A => C =
     (a: A) => f(g(a))
-
-  println(isSorted[Int](Array(1, 2, 3), _ < _))
 }
