@@ -25,8 +25,13 @@ object List {
     case c: Cons[A] => c
     case Nil => sys.error("list too short")
   }
+
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
+    case Cons(h, t) if f(h) => dropWhile(t, f)
+    case _ => l
+  }
 }
 
 object Main extends App {
-  println(List.drop(List(1,2,3,4,5,6,7,8,9,10), 5))
+  println(List.dropWhile[Int](List(1,2,3,4,5,6,7,8,9,10), _ < 7))
 }
