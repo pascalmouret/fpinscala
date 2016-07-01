@@ -10,7 +10,12 @@ object List {
     else Cons(as.head, apply(as.tail: _*))
 
   def tail[A](l: List[A]): List[A] = l match {
-    case Cons(_, tail) => tail
+    case Cons(_, t) => t
+    case _ => sys.error("empty list")
+  }
+
+  def setHead[A](h: A, l: List[A]): List[A] = l match {
+    case Cons(_, t) => Cons(h, t)
     case _ => sys.error("empty list")
   }
 }
