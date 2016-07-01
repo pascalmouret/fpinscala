@@ -1,0 +1,2 @@
+Exercise 3.1
+Result would be 3 (i.e. it matches on the third case, but the result of the statement is also 3)
