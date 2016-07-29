@@ -109,9 +109,26 @@ object List {
       case (Nil, _) => Nil
       case (_, Nil) => Nil
       case (Cons(h1, t1), Cons(h2, t2)) => Cons(f(h1, h2), zipWith(t1, t2)(f))
+    }
+  }
+
+  // helper for hasSubsequence, not an exercise
+  @annotation.tailrec
+  def startsWith[A](sup: List[A], sub: List[A]): Boolean = (sup, sub) match {
+    case (_, Nil) => true
+    case (Cons(h1, t1), Cons(h2, t2)) if h1 == h2 => startsWith(t1, t2)
+    case _ => false
+  }
+
+  @annotation.tailrec
+  def hasSubsequence[A](sup: List[A], sub: List[A]): Boolean = sup match {
+    case Cons(h, t) =>
+      if (startsWith(sup, sub)) true
+      else hasSubsequence(t, sub)
+    case Nil => sub == Nil
   }
 }
 
 object Main extends App {
-  println(List.filterWithFlatMap(List(1,2,3,4,5))(_ % 2 == 0))
+  println(List.hasSubsequence(List(1,2,3,4,5), List(4,3)))
 }
