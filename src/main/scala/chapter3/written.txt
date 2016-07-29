@@ -1,2 +1,9 @@
 Exercise 3.1
 Result would be 3 (i.e. it matches on the third case, but the result of the statement is also 3)
+
+Exercise 3.7
+No, because we'd only be able to find out after the whole call stack has been built, at which
+point there is no functional way to break out of it.
+
+Exercise 3.8
+We get back the same list, as this is essentially the same implementation as "apply".
