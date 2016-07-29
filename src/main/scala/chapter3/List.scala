@@ -128,7 +128,3 @@ object List {
     case Nil => sub == Nil
   }
 }
-
-object Main extends App {
-  println(List.hasSubsequence(List(1,2,3,4,5), List(4,3)))
-}
